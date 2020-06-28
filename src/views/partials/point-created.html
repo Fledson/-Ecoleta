@@ -1,0 +1,19 @@
+<!-- modal é a segunda tela (preta completa) -->
+<div id="modal" class="point"> 
+    <!-- o content é a parte central onde fica o conteudo -->
+    <div class="content">
+        <img src="/assets/check.svg" alt="Cadastro concluido">
+        <h1>Cadastro concluido!</h1>
+    </div>
+</div>  
+
+{# Script para configurar a pagina para retornar para a pagiana inicial depois de 2 segs  #}
+{# setTimeout essa função é executada depois do tempo determinado no seu segundo parametro #}
+
+<script>
+
+    setTimeout(() => {
+        window.location = "/"
+    }, 2000)
+
+</script>

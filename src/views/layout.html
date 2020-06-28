@@ -1,0 +1,43 @@
+{# ESTRUTURA DA APLICAÇÃO #}
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   {# criando um bloco para identificar a montagem da pagina, onde colocar cada item #}
+   {# BLOCO DE TITULO - Se ele não achar o bloco na pagina coloca o que esta colocado aqui #}
+   {% block title %}
+        <title>Ecoleta</title>
+   {% endblock title %}
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+
+    {# Bloco Styles, para carregar o style individual de cada pagina #}
+    {# Colocar os styles gerais fora do bloco, caso estejam dentro vai substituir os que serão passados pela pagina #}
+    <link rel="stylesheet" href="/styles/main.css">
+    {% block styles %}
+    {% endblock styles %}
+    <link rel="stylesheet" href="/styles/responsive.css">
+
+</head>
+
+<body>
+
+    {# O bodyId é a variavel que carrega a informação da indentificação da div de cada pagina #}
+    <div id="{{ pageId }}">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    {# Recebe as informações colocadas nesse block que são passadas na pagina, essas são a do modal #}
+    {% block modal %}
+    {% endblock modal %}
+
+    {# Recebe os Scripts JS das paginas individualmente #}
+    {% block scripts %}
+    {% endblock scripts %}    
+
+</body>
+</html>

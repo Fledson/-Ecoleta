@@ -1,0 +1,48 @@
+{# herdando as propriedades do layout.html #}
+{% extends "layout.html" %}
+
+{# criando uma variavel para passar o body da pagina, no layout tem uma div que receberá essa indentificação #}
+{% set pageId = "page-home" %}
+
+{# criando um bloco para identificar a montagem da pagina, onde colocar cada item #}
+{% block styles %}
+    <link rel="stylesheet" href="/styles/home.css">
+    <link rel="stylesheet" href="/styles/modal.css">
+{% endblock styles %}
+
+{# Bloco da pagina DIV principal#}
+{% block content %}
+    <div class="content">
+
+        <header>
+            <img src="/assets/logo.svg" alt="Logomarca">
+            <a href="/create-point">
+                <span></span>
+                Cadastre um ponto de coleta
+            </a>
+        </header>
+
+        <main>
+            <h1>Seu marketplace de coleta de resíduos</h1>
+
+            <p>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente.</p>
+
+            <a href="#">
+                <span></span>
+                <strong>Pesquisar pontos de coleta</strong>
+            </a>
+        </main>
+
+    </div>
+{% endblock content %}
+
+{# Bloco do Modal #}
+{% block modal %}
+    <!-- chama o modal na pasta partials -->
+    {% include "partials/modal.html" %}
+{% endblock modal %}
+
+{# bloco dos scripts em JS #}
+{% block scripts %}
+    <script src="/scripts/index.js"></script>
+{% endblock scripts %}

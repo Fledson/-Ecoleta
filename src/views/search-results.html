@@ -1,0 +1,60 @@
+{# herdando as propriedades do layout.html #}
+{% extends "layout.html" %}
+
+{# criando uma variavel para passar o body da pagina, no layout tem uma div que receberá essa indentificação #}
+{% set pageId = "page-search-results" %}
+
+{% block title %}
+    <title>Resultado da Pesquisa</title>
+{% endblock title %}
+
+{# criando um bloco para identificar a montagem da pagina, onde colocar cada item #}
+{% block styles %}
+    <link rel="stylesheet" href="/styles/search-results.css">
+{% endblock styles %}
+
+{# Bloco da pagina DIV principal#}
+{% block content %}
+    
+    {% include "partials/page-header.html" %}
+
+    <main>
+
+        {% if total > 0 %}
+
+            <h4>
+                <strong>{{total}} pontos</strong>
+                encontrados
+            </h4>
+
+            <div class="cards">
+
+                {# Estrutura de repetição para popular a pagina com os dados do banco de dados #}
+                {# places(segundo parametro) tem que ser o argumento que foi passada pelo servidor #}
+                {% for place in places %}
+                    <div class="card">
+                        <img src="{{ place.image }}" alt="{{ place.name }}">
+                        <h1>{{ place.name }}</h1>
+                        <h3>{{ place.items }}</h3>
+                        <p>
+                            {{ place.city }}, {{ place.state }}
+                            <br>
+                            {{ place.address }}
+                            <br>
+                            {{ place.address2 }}
+                        </p>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+        <h4><strong>Nenhum</strong> local encontrado</h4> 
+        
+        {% endif %}
+
+
+    </main>
+
+{% endblock content %}
